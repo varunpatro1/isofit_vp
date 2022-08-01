@@ -42,7 +42,7 @@ assert(inv.full_statevector(x).all() == x.all()) # inv.self_fixed = None
 radiance_measurement = fm.calc_rdn(x, geom)
 #print(type(inv.invert(radiance_measurement, geom)))
 #print(inv.invert(radiance_measurement, geom).shape)
-print(inv.invert(radiance_measurement, geom)[0])
+#print(inv.invert(radiance_measurement, geom)[0])
 
 print('TESTS COMPLETE')
 
