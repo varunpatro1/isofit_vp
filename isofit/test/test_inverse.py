@@ -8,6 +8,7 @@ from isofit.configs.configs import create_new_config, get_config_differences
 from isofit.inversion.inverse import Inversion
 from isofit.core.fileio import IO
 import numpy as np
+import os
 
 
 def test_error_code():
@@ -21,8 +22,7 @@ surface_model("examples/20171108_Pasadena/configs/ang20171108t184227_surface.jso
 config = create_new_config("examples/20171108_Pasadena/configs/ang20171108t184227_beckmanlawn.json")
 fm = ForwardModel(config)
 
-
-x = np.loadtxt(r'/Users/varunpatro/Desktop/avirisng_input.txt')
+x = np.loadtxt(r" C:\\Users\\vpatro\\Desktop\\avirisng_input.txt")
 x = np.append(x,1.75)
 x = np.append(x,0.05)
 
@@ -35,7 +35,6 @@ meas = io.current_input_data.meas  # a numpy  array
 
 assert(inv.full_statevector(x).all() == x.all()) # inv.self_fixed = None
 
-count = 0
 OE_estimations = [[], [], [], [], []]
 for i in range(5):
     radiance_measurement = fm.calc_rdn(x,geom)
@@ -50,22 +49,10 @@ assert(OE_estimations[0,:].all() == OE_estimations[3,:].all())
 assert(OE_estimations[0,:].all() == OE_estimations[4,:].all())
 
 
-#print(type(inv.invert(radiance_measurement, geom)))
-#print(inv.invert(radiance_measurement, geom).shape)
-<<<<<<< HEAD
-#print(inv.invert(radiance_measurement, geom)[0])
-=======
-np.savetxt(r'/Users/varunpatro/Desktop/OE_reflectance_estimation.txt',\
-     OE_estimations)
-
-#first_col = OE_estimations[0,:]
-#print(OE_estimations.shape)
-#print(first_col.shape)
-
-#for i in range(1,5):
+np.savetxt(r'C:\Users\vpatro\\Desktop\OE_reflectance_estimation.txt', OE_estimations)
 
 
->>>>>>> 7233fc971e1c5d194c3e09be071e3fec685afe1c
+
 
 print('TESTS COMPLETE')
 
